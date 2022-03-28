@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\BrandsController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\SizesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +20,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/dashboard2' , function() {
-    return view('layouts.master');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+
+    // CATOGERY
+    Route::resource('categories', CategoriesController::class)->except(['show']);
+    Route::get('/export', [CategoriesController::class, 'export']);
+    Route::post('/importexcel', [CategoriesController::class, 'importexcel']);
+
+    // BRAND
+    Route::resource('brands', BrandsController::class);
+    Route::get('/export/brand', [BrandsController::class, 'export']);
+    Route::post('/import/brands', [BrandsController::class, 'importexcel']);
+
+    // Size
+    Route::resource('sizes', SizesController::class)->except(['show']);
+
 });
+
+

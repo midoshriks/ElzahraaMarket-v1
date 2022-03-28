@@ -39,9 +39,24 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Active Page</p>
+                                    <a href="{{ route('categories.index')}}" class="nav-link"> <!-- active-->
+                                        <i class="fa fa-list-alt mr-2"></i>
+                                        <p>Cateogry</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('brands.index')}}" class="nav-link"> <!-- active-->
+                                        <i class="fa fa-cubes mr-2"></i>
+                                        <p>Brand</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('sizes.index')}}" class="nav-link"> <!-- active-->
+                                        {{-- <i class="fa fa-arrow-up-big-small mr-2"></i> --}}
+                                        <i class="fa fa-crop mr-2"></i>
+                                        <p>Size</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
